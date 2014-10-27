@@ -10,10 +10,13 @@ set(SOURCES
     configfile/configset.cc
     configfile/shell_expand.cc
     configsearch/configuration_finder.cc
-    demangle/demangle.cc
     memory/dynamic_pool.cc
     singleton/dummy.cc
     singleton/server.cc)
+
+if (NOT VXWORKS)
+    set(SOURCES ${SOURCES} demangle/demangle.cc)
+endif (NOT VXWORKS)
 
 if(NOT WIN32 AND NOT VXWORKS)
     set(SOURCES ${SOURCES} ${SOURCES_UNIX_ONLY})
