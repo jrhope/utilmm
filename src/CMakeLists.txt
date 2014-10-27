@@ -15,9 +15,9 @@ set(SOURCES
     singleton/dummy.cc
     singleton/server.cc)
 
-if(NOT WIN32)
+if(NOT WIN32 AND NOT VXWORKS)
     set(SOURCES ${SOURCES} ${SOURCES_UNIX_ONLY})
-endif(NOT WIN32)
+endif(NOT WIN32 AND NOT VXWORKS)
 
 add_library(utilmm SHARED ${SOURCES})
 
